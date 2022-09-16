@@ -11,10 +11,20 @@ const Profile = () => {
 		axios.get(url).then((res) => console.log(res.data))
 	}, [])*/
 	
-	const url = `/user/${id}`
-	console.log(url)
 	useEffect(() => {
-		axios.get(url).then((res) => console.log(res.data))
+		axios.get(`/user/${id}`).then((res) => console.log(res))
+	}, [])
+	
+	useEffect(() => {
+		axios.get(`/user/${id}/activity`).then((res) => console.log(res))
+	}, [])
+	
+	useEffect(() => {
+		axios.get(`/user/${id}/average-sessions`).then((res) => console.log(res))
+	}, [])
+	
+	useEffect(() => {
+		axios.get(`/user/${id}/performance`).then((res) => console.log(res))
 	}, [])
 	
 	return (
