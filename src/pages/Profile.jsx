@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
+import Header from '../components/Header'
 
 const Profile = () => {
 	
@@ -28,8 +29,14 @@ const Profile = () => {
 	}, [])
 	
 	return (
-		<div>
-			<h1>Hello Profile</h1>
+		<div className='page-container'>
+			<Header/>
+			<main className='main-container'>
+				<div className='left-container'></div>
+				<div className='content content-profile'>
+					<h1>Hello prenom</h1>
+				</div>
+			</main>
 		</div>
 	)
 }
