@@ -15,19 +15,6 @@
 .main-container{
   display: grid;
   grid-template-columns: auto 1fr;
-  background-color: white;
-}
-.header-container{
-  background-color: #262627;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-}
-.left-container{
-  width:80px;
-  height: 100%;
-  background-color: #262627;
 }
 .content{
   padding: 40px;

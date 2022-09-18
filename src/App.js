@@ -8,7 +8,7 @@ function App() {
   return (
       <BrowserRouter>
           <Routes>
-              <Route path={'/'} element={<InProgress/>}/>
+              <Route path={'/*'} element={<InProgress/>}/>
               <Route path= {`/profil/user/:id`} element={<Profile/>}/>
           </Routes>
       </BrowserRouter>

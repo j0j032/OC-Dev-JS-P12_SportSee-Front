@@ -4,31 +4,28 @@ import logo from '../assets/logos/sportSee-logo.svg'
 
 const Header = () => {
 	return (
-		<div className='header-container'>
-			<NavLink to='/'>
-			<img src={logo} alt='logo sportSee'/>
-			</NavLink>
-			<nav>
+		<div className='header__container'>
 				<ul className='header__nav'>
-					<NavLink to='/'
+					<NavLink to='/home'>
+						<img src={logo} alt='logo sportSee'/>
+					</NavLink>
+					<NavLink to='/home'
 							 className={(nav) => (nav.isActive ? 'header__nav-link--active' : 'header__nav-link')}>
 						<li>Accueil</li>
 					</NavLink>
 					<NavLink to={`/profil/user/:id`}
 							 className={(nav) => (nav.isActive ? 'header__nav-link--active' : 'header__nav-link')}>
-						<li>A propos</li>
+						<li>Profil</li>
 					</NavLink>
-					<NavLink to='/'
+					<NavLink to='/settings'
 							 className={(nav) => (nav.isActive ? 'header__nav-link--active' : 'header__nav-link')}>
-						<li>Accueil</li>
+						<li>Réglage</li>
 					</NavLink>
-					<NavLink to='/'
+					<NavLink to='/community'
 							 className={(nav) => (nav.isActive ? 'header__nav-link--active' : 'header__nav-link')}>
-						<li>Accueil</li>
+						<li>Communauté</li>
 					</NavLink>
 				</ul>
-			</nav>
-			
 		</div>
 	)
 }
