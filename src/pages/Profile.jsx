@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useParams} from 'react-router-dom'
 import Header from '../components/Header'
 import LateralBar from '../components/LateralBar'
+import Activity from '../components/Activity'
 
 const Profile = () => {
 	
@@ -36,6 +37,7 @@ const Profile = () => {
 				<LateralBar/>
 				<div className='content content-profile'>
 					<h1>Hello prenom</h1>
+					<Activity/>
 				</div>
 			</main>
 		</div>
