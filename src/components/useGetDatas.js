@@ -13,10 +13,8 @@ export const useGet = (endPoint) => {
 		setLoading(true)
 		axios
 			.get(userUrl+endPoint)
-			.then((response) => {
-				console.log(response.data)
-				setData(response.data.data)
-			}
+			.then((response) => setData(response.data.data)
+			
 			)
 			
 			.catch((error) => {

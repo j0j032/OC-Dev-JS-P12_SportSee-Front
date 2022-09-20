@@ -1,7 +1,12 @@
 import React, { PureComponent } from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {useParams} from 'react-router-dom'
+import {useGet} from './useGetDatas'
+import Loader from './Loader'
 
-const data = [
+
+
+/*const data = [
 	{
 		name: 'Page A',
 		uv: 4000,
@@ -44,14 +49,16 @@ const data = [
 		pv: 4300,
 		amt: 2100,
 	},
-];
+];*/
 
-export default class Activity extends PureComponent {
-	
-	render() {
-		return (
-			<div className='Test'>
-			<ResponsiveContainer width="100%" height="100%">
+const Activity = () => {
+	const {id} = useParams()
+	const {data, isLoading, error} = useGet(`${id}/activity`)
+	console.log(data, isLoading, error)
+	if (error || id === undefined) return <span>Oups il y a eu un problème</span>
+	return isLoading? (<Loader/>) : (
+		<div className='Test'>
+			{/*<ResponsiveContainer width="100%" height="100%">
 				<BarChart
 					width={500}
 					height={300}
@@ -77,9 +84,9 @@ export default class Activity extends PureComponent {
 						 radius={[10,10,0,0]}
 						 barSize={10} />
 				</BarChart>
-			</ResponsiveContainer>
-			
-			</div>
-		);
-	}
+			</ResponsiveContainer>*/}
+		</div>
+	);
 }
+
+export default Activity
