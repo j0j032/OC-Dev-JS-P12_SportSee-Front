@@ -4,7 +4,6 @@ import Profile from './pages/Profile'
 import InProgress from './pages/inProgress'
 
 function App() {
-    //const id = 12
   return (
       <BrowserRouter>
           <Routes>
