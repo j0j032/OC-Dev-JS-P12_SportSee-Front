@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
 import Header from '../components/Header'
@@ -6,17 +6,16 @@ import LateralBar from '../components/LateralBar'
 import Activity from '../components/Activity'
 import ActivityD3 from '../components/ActivityD3'
 import {useGet} from '../components/useGetDatas'
+import Loader from '../components/Loader'
 
 const Profile = () => {
-	
-	
 	const {id} = useParams()
-	const findBy ={
-		method:'find',
-		callback: (item) => item.id === id,
-	}
-	const {data, isLoading, error} = useGet(id)
-	console.log(data.userInfos, isLoading, error)
+	
+	const {data , isLoading, error} = useGet(id)
+	console.log(data, isLoading, error)
+	
+	const {userInfos} = data
+	
 	/*console.log(process.env.REACT_APP_ENVIRONMENT)
 	
 	const url = `http://localhost:3000/user/${id}`
@@ -40,14 +39,16 @@ const Profile = () => {
 		axios.get(`http://localhost:3001/user/${id}/performance`).then((res) => console.log(res))
 	}, [])*/
 	
-	return (
+	return isLoading ? (
+		<Loader/>
+	) : (
 		<div className='page-container'>
-			<Header/>
+			<Header />
 			<main className='main-container'>
 				<LateralBar/>
 				<div className='content content-profile'>
 					<ActivityD3/>
-					<h1>Hello prenom</h1>
+					<h1>{`Hello ${userInfos.firstName}`}</h1>
 					<Activity/>
 				</div>
 			</main>

@@ -3,6 +3,8 @@ import {NavLink} from 'react-router-dom'
 import logo from '../assets/logos/sportSee-logo.svg'
 
 const Header = () => {
+	let userId
+	process.env.REACT_APP_ENVIRONMENT === 'mockedApi' ? userId = '12' : userId = '18'
 	return (
 		<div className='header__container'>
 				<ul className='header__nav'>
@@ -13,7 +15,7 @@ const Header = () => {
 							 className={(nav) => (nav.isActive ? 'header__nav-link--active' : 'header__nav-link')}>
 						<li>Accueil</li>
 					</NavLink>
-					<NavLink to={`/profil/user/:id`}
+					<NavLink to={`/profil/user/${userId}`}
 							 className={(nav) => (nav.isActive ? 'header__nav-link--active' : 'header__nav-link')}>
 						<li>Profil</li>
 					</NavLink>
