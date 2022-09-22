@@ -16,9 +16,13 @@
   display: grid;
   grid-template-columns: auto 1fr;
 }
+
 .content{
-  padding: 40px;
+  padding: 60px 80px 40px 80px;
   &-profile{
     font-size: 32px;
   }
 }
+
+
+
