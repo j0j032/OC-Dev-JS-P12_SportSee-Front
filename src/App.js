@@ -1,10 +1,19 @@
 import './style/App.scss';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Profile from './pages/Profile'
+import InProgress from './pages/inProgress'
+
+
 
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+      <BrowserRouter>
+          <Routes>
+              <Route path={'/*'} element={<InProgress/>}/>
+              <Route path= {`/profil/user/:id`} element={<Profile/>}/>
+          </Routes>
+      </BrowserRouter>
+      
   );
 }
 

@@ -1,3 +1,28 @@
-body{
-  background-color: #262627;
+*{
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
 }
+#root{
+  height: 100vh;
+}
+
+.page-container{
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.main-container{
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.content{
+  padding: 60px 80px 40px 80px;
+  &-profile{
+    font-size: 32px;
+  }
+}
+
+
+
