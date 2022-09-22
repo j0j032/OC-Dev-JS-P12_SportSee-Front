@@ -4,7 +4,7 @@ import logo from '../assets/logos/sportSee-logo.svg'
 
 const Header = () => {
 	let userId
-	process.env.REACT_APP_ENVIRONMENT === 'mockedApi' ? userId = '12' : userId = '18'
+	process.env.REACT_APP_ENVIRONMENT === 'mockedApi' ? userId = '18' : userId = '12'
 	return (
 		<div className='header__container'>
 				<ul className='header__nav'>

@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react'
-import axios from 'axios'
+import React from 'react'
 import {useParams} from 'react-router-dom'
 import Header from '../components/Header'
 import LateralBar from '../components/LateralBar'

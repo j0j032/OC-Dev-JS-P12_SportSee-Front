@@ -55,14 +55,17 @@ const Activity = () => {
 	const {id} = useParams()
 	const {data, isLoading, error} = useGet(`${id}/activity`)
 	console.log(data, isLoading, error)
+	const {userId} = data
+	console.log(userId)
 	if (error || id === undefined) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
 		<div className='Test'>
-			{/*<ResponsiveContainer width="100%" height="100%">
+			<p>{userId}</p>
+			<ResponsiveContainer width="100%" height="100%">
 				<BarChart
 					width={500}
 					height={300}
-					data={data}
+					data={data.sessions}
 					margin={{
 						top: 5,
 						right: 30,
@@ -71,20 +74,20 @@ const Activity = () => {
 					}}
 				>
 					<CartesianGrid strokeDasharray="10 20" />
-					<XAxis dataKey="name" />
-					<YAxis />
+					<XAxis dataKey="day.index" />
+					<YAxis dataKey=""/>
 					<Tooltip />
 					<Legend layout="horizontal" verticalAlign="top" align="right" iconType="circle"  />
-					<Bar dataKey="pv"
+					<Bar dataKey="kilogram"
 						 fill="black"
 						 radius={[10,10,0,0]}
 						 barSize={10}/>
-					<Bar dataKey="uv"
+					<Bar dataKey="calories"
 						 fill="red"
 						 radius={[10,10,0,0]}
 						 barSize={10} />
 				</BarChart>
-			</ResponsiveContainer>*/}
+			</ResponsiveContainer>
 		</div>
 	);
 }
