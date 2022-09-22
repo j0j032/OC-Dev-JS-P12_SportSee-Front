@@ -10,13 +10,25 @@ const CustomTooltip = ({payload, active}) => {
 	if (active) {
 		return (
 			<div className="custom-tooltip">
-				<p className="desc">{`${payload[0].value}kg`}</p>
-				<p className="desc">{`${payload[1].value}cal`}</p>
+				<p>{`${payload[0].value}kg`}</p>
+				<p>{`${payload[1].value}cal`}</p>
 			</div>
 		);
 	}
 	
 	return null;
+};
+
+const CustomLegend = () => {
+		return (
+			<div className="custom-legend">
+				<h3>Activité quotidienne</h3>
+				<div className='bar-legend'>
+					<p>Poids (kg)</p>
+					<p>Calories brulées (kCal)</p>
+				</div>
+			</div>
+		);
 };
 
 
@@ -26,13 +38,9 @@ const Activity = () => {
 	const {data, isLoading, error} = useGet(`${id}/activity`)
 	console.log(data, isLoading, error)
 	
-	const {userId} = data
-	console.log(userId)
-	
 	if (error || id === undefined) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
-		<div className='Test'>
-			<p>{userId}</p>
+		<div className='activity-container'>
 			<ResponsiveContainer title= "Activité quotidienne" width="100%" height="100%">
 				<BarChart
 					width={500}
@@ -56,8 +64,9 @@ const Activity = () => {
 					/>
 					<YAxis dataKey="kilogram"
 						   yAxisId="kilogram"
+						   axisLine={false}
 						   domain={["dataMin-2", 'dataMax+1']}
-						   dx={15}
+						   dx={14}
 						   tickCount= "3"
 						   tickLine={false}
 						   tick={{fontSize:14}}
@@ -68,15 +77,14 @@ const Activity = () => {
 						   type='number'
 						   hide={true}
 					/>
+					<Legend layout="horizontal"
+							content={<CustomLegend/>}
+							verticalAlign="top"
+							
+					/>
 					<Tooltip labelFormatter={()=>""}
 							 cursor={{fill:"#DFDFDF", opacity:"0.6"}}
-							 content={<CustomTooltip kg={data.sessions[0].kilogram}/>}
-					/>
-					<Legend layout="horizontal"
-							verticalAlign="top"
-							align="right"
-							iconType="circle"
-							formatter={(value)=><span className='legend-text'>{value}</span> }
+							 content={<CustomTooltip />}
 					/>
 					<Bar dataKey="kilogram"
 						 yAxisId="kilogram"

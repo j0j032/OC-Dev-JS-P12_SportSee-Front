@@ -1,3 +1,11 @@
+.activity-container{
+  padding: 20px 0 20px 0;
+  border-radius: 5px;
+  width: 835px;
+  height: 320px;
+  background-color:#FBFBFB ;
+}
+
 .custom-tooltip{
   display: flex;
   flex-direction: column;
@@ -6,7 +14,46 @@
   padding: 20px;
   color: white;
   font-size: 12px;
+  border-radius: 0;
 }
-.legend-text{
-  color: grey;
+
+.custom-legend{
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  >h3{
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .bar-legend{
+    display: flex;
+    gap:20px;
+    margin-right:20px;
+    :nth-child(1) {
+      font-size: 14px;
+      color: #74798C;
+      &:before {
+        content:"";
+        margin-right: 14px;
+        width:10px;
+        height:10px;
+        border-radius:50%;
+        display:inline-block;
+        background: black;
+      }
+    }
+    :nth-child(2){
+      font-size: 14px;
+      color: #74798C;
+      &:before {
+        content:"";
+        margin-right: 14px;
+        width:10px;
+        height:10px;
+        border-radius:50%;
+        display:inline-block;
+        background: red;
+      }
+    }
+  }
 }

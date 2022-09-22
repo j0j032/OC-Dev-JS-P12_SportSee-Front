@@ -3,7 +3,6 @@ import {useParams} from 'react-router-dom'
 import Header from '../components/Header'
 import LateralBar from '../components/LateralBar'
 import Activity from '../components/Activity'
-import ActivityD3 from '../components/ActivityD3'
 import {useGet} from '../components/useGetDatas'
 import Loader from '../components/Loader'
 import KeyInfo from '../components/KeyInfo'
@@ -28,14 +27,23 @@ const Profile = () => {
 				{isLoading? (<Loader/>
 					):(
 						<div className='content content-profile'>
-							<h1>{`Bonjour ${userInfos.firstName}`}</h1>
-							{/*<ActivityD3/>*/}
-							<Activity/>
-							<div className='key-infos__container'>
-								<KeyInfo keyData={keyData.calorieCount} img={caloriesIcon} unit={'kCal'} category={'Calories'}/>
-								<KeyInfo keyData={keyData.proteinCount} img={proteinIcon} unit={'g'} category={'Proteines'}/>
-								<KeyInfo keyData={keyData.carbohydrateCount} img={carbsIcon} unit={'g'} category={'Glucides'}/>
-								<KeyInfo keyData={keyData.lipidCount} img={fatIcon} unit={'g'} category={'Lipides'}/>
+							<div className='welcome'>
+								<h1>Bonjour <span>{`${userInfos.firstName}`}</span></h1>
+								<p>Félicitations! Vous avez explosé vos objectifs hier 👏</p>
+							</div>
+							<div className='dashboard'>
+								<div className='charts'>
+									<Activity/>
+									<div>
+										OtherCharts
+									</div>
+								</div>
+								<div className='key-infos__container'>
+									<KeyInfo className='key-info' keyData={keyData.calorieCount} img={caloriesIcon} unit={'kCal'} category={'Calories'}/>
+									<KeyInfo className='key-info' keyData={keyData.proteinCount} img={proteinIcon} unit={'g'} category={'Proteines'}/>
+									<KeyInfo className='key-info' keyData={keyData.carbohydrateCount} img={carbsIcon} unit={'g'} category={'Glucides'}/>
+									<KeyInfo className='key-info' keyData={keyData.lipidCount} img={fatIcon} unit={'g'} category={'Lipides'}/>
+								</div>
 							</div>
 						</div>
 					)
