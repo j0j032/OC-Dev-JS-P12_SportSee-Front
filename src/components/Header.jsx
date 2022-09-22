@@ -1,12 +1,12 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import logo from '../assets/logos/sportSee-logo.svg'
+import provisionalConfig from '../config'
 
 
 const Header = () => {
 	
-	let userId
-	process.env.REACT_APP_ENVIRONMENT === 'mockedApi' ? userId = '18' : userId = '12'
+	const userId = provisionalConfig().userId
 	
 	return (
 		<div className='header__container'>

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import provisionalConfig from '../config'
 
-const setPort = () => process.env.REACT_APP_ENVIRONMENT === 'mockedApi' ? '3001' : '3000'
-const userUrl = `http://localhost:${setPort()}/user/`
+const userRoute = provisionalConfig().url
 
 export const useGet = (endPoint) => {
 	const [data, setData] = useState({})
@@ -12,7 +12,7 @@ export const useGet = (endPoint) => {
 	useEffect(() => {
 		setLoading(true)
 		axios
-			.get(userUrl+endPoint)
+			.get(userRoute+endPoint)
 			.then((response) => setData(response.data.data)
 			
 			)

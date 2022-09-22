@@ -1,30 +1,33 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
+import {useGet} from '../components/useGetDatas'
+import Loader from '../components/Loader'
 import Header from '../components/Header'
 import LateralBar from '../components/LateralBar'
 import Activity from '../components/Activity'
-import {useGet} from '../components/useGetDatas'
-import Loader from '../components/Loader'
 import KeyInfo from '../components/KeyInfo'
+import AverageSession from '../components/AverageSession'
 import caloriesIcon from '../assets/icons/calories-icon.svg'
 import proteinIcon from '../assets/icons/protein-icon.svg'
 import carbsIcon from '../assets/icons/carbs-icon.svg'
 import fatIcon from '../assets/icons/fat-icon.svg'
 
 const Profile = () => {
-	
 	const {id} = useParams()
 	
-	const {data , isLoading, error} = useGet(id)
-	const {userInfos, keyData} = data
+	const userInfo = useGet(id)
+	const userActivity = useGet(`${id}/activity`)
+	const userSessions = useGet(`${id}/average-sessions`)
 	
-	if (error || id === undefined) return <span>Oups il y a eu un problème</span>
+	const {userInfos, keyData} = userInfo.data
+	
+	if (userInfo.error || id === undefined) return <span>Oups il y a eu un problème</span>
 	return (
 		<div className='page-container'>
 			<Header />
 			<main className='main-container'>
 				<LateralBar/>
-				{isLoading? (<Loader/>
+				{userInfo.isLoading? (<Loader/>
 					):(
 						<div className='content content-profile'>
 							<div className='welcome'>
@@ -33,9 +36,9 @@ const Profile = () => {
 							</div>
 							<div className='dashboard'>
 								<div className='charts'>
-									<Activity/>
+									<Activity activityData={userActivity}/>
 									<div>
-										OtherCharts
+										<AverageSession sessionData={userSessions}/>
 									</div>
 								</div>
 								<div className='key-infos__container'>
@@ -56,17 +59,7 @@ const Profile = () => {
 export default Profile
 
 
-/*console.log(process.env.REACT_APP_ENVIRONMENT)
-	
-	
-	useEffect(() => {
-		axios.get(`http://localhost:3001/user/${id}/activity`).then((res) => console.log(res))
-	}, [])
-	
-	useEffect(() => {
-		axios.get(`http://localhost:3001/user/${id}/average-sessions`).then((res) => console.log(res))
-	}, [])
-	
+/*
 	useEffect(() => {
 		axios.get(`http://localhost:3001/user/${id}/performance`).then((res) => console.log(res))
 	}, [])*/

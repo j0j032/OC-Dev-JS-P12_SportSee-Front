@@ -1,10 +1,6 @@
 import React from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import {useParams} from 'react-router-dom'
-import {useGet} from './useGetDatas'
 import Loader from './Loader'
-
-
 
 const CustomTooltip = ({payload, active}) => {
 	if (active) {
@@ -32,13 +28,10 @@ const CustomLegend = () => {
 };
 
 
-const Activity = () => {
+const Activity = ({activityData}) => {
+	const {data, isLoading, error} = activityData
 	
-	const {id} = useParams()
-	const {data, isLoading, error} = useGet(`${id}/activity`)
-	console.log(data, isLoading, error)
-	
-	if (error || id === undefined) return <span>Oups il y a eu un problème</span>
+	if (error) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
 		<div className='activity-container'>
 			<ResponsiveContainer title= "Activité quotidienne" width="100%" height="100%">
