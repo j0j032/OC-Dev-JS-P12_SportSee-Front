@@ -4,8 +4,6 @@ import {useParams} from 'react-router-dom'
 import {useGet} from './useGetDatas'
 import Loader from './Loader'
 
-
-
 const CustomTooltip = ({payload, active}) => {
 	if (active) {
 		return (
