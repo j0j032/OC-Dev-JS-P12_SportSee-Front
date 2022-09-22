@@ -13,6 +13,7 @@ import carbsIcon from '../assets/icons/carbs-icon.svg'
 import fatIcon from '../assets/icons/fat-icon.svg'
 
 const Profile = () => {
+	
 	const {id} = useParams()
 	
 	const {data , isLoading, error} = useGet(id)
@@ -28,7 +29,7 @@ const Profile = () => {
 					):(
 						<div className='content content-profile'>
 							<h1>{`Bonjour ${userInfos.firstName}`}</h1>
-							<ActivityD3/>
+							{/*<ActivityD3/>*/}
 							<Activity/>
 							<div className='key-infos__container'>
 								<KeyInfo keyData={keyData.calorieCount} img={caloriesIcon} unit={'kCal'} category={'Calories'}/>
