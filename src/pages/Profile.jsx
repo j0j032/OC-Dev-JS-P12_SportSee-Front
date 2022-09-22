@@ -16,8 +16,10 @@ const Profile = () => {
 	const {id} = useParams()
 	
 	const userInfo = useGet(id)
-	const {userInfos, keyData} = userInfo.data
 	const userActivity = useGet(`${id}/activity`)
+	const userSessions = useGet(`${id}/average-sessions`)
+	
+	const {userInfos, keyData} = userInfo.data
 	
 	if (userInfo.error || id === undefined) return <span>Oups il y a eu un problème</span>
 	return (
@@ -36,7 +38,7 @@ const Profile = () => {
 								<div className='charts'>
 									<Activity activityData={userActivity}/>
 									<div>
-										<AverageSession/>
+										<AverageSession sessionData={userSessions}/>
 									</div>
 								</div>
 								<div className='key-infos__container'>
