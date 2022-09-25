@@ -16,7 +16,12 @@
 .dashboard{
   display: flex;
   justify-content: space-between;
-  height: 70%;
+  height: 84%;
+}
+.charts{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .secondary-charts-container{
   display: grid;
