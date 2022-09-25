@@ -37,7 +37,7 @@ const Profile = () => {
 							<div className='dashboard'>
 								<div className='charts'>
 									<Activity activityData={userActivity}/>
-									<div>
+									<div className='secondary-charts-container'>
 										<AverageSession sessionData={userSessions}/>
 									</div>
 								</div>

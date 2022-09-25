@@ -1,0 +1,31 @@
+.sessions-container{
+  position: relative;
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.weekend{
+  width: 78px;
+  height: 100%;
+  background: #262627;
+  opacity: 0.1;
+}
+
+.custom-legend--sessions{
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  width: 148px;
+  color: white;
+  opacity: 0.4;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.custom-tooltip--sessions{
+  background-color: #FFFEFC;
+  color: #262627;
+  font-size: 8px;
+  padding: 8px;
+}

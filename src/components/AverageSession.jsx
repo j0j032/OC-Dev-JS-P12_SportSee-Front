@@ -1,15 +1,91 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
 import Loader from './Loader'
+import {
+	Customized,
+	Legend,
+	Line,
+	LineChart,
+	ResponsiveContainer,
+	Tooltip,
+	XAxis,
+	YAxis
+} from 'recharts'
+
+const CustomTooltip = ({payload, active}) => {
+	if (active) {
+		return (
+			<div className="custom-tooltip--sessions">
+				<p>{`${payload[0].value} min`}</p>
+			</div>
+		);
+	}
+	
+	return null;
+};
+
+const CustomLegend = () => {
+	return (
+		<div className="custom-legend--sessions">
+			<p>Durée moyenne des sessions</p>
+		</div>
+	);
+};
+
+const CustomWeekend = () => {
+	return(
+		<rect x='194' className='weekend'></rect>
+	)
+}
 
 const AverageSession = ({sessionData}) => {
+	
 	const {id} = useParams()
 	const {data, isLoading, error} = sessionData
-	console.log(data.sessions)
+	
+	const formatData = () => {
+		const days = ["L","M","M","J","V","S","D"]
+		return days.map((item, index) => ({day: item, length: data.sessions[index].sessionLength}))
+	}
+	console.log(formatData())
 	
 	if (error || id === undefined) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
-		<div className='average-container'>
+		<div className='sessions-container'>
+			
+			<ResponsiveContainer width="100%" height="100%">
+				<LineChart width="100%" height="100%"
+						   data={formatData()}
+						   margin={{ top: 10, right: 15, left: 15, bottom: 10 }}>
+					<XAxis dataKey="day"
+						   stroke='#fffefc'
+						   tickLine={false}
+						   axisLine={false}
+						   tick={{fontSize:12, opacity:0.6}}
+					/>
+					<YAxis hide={true} padding={{top: 80,bottom:40}}/>
+					<Tooltip content={<CustomTooltip />}
+							 cursor={{
+								 strokeOpacity:0,
+							 }}
+					/>
+					<Legend verticalAlign='top'
+							content={<CustomLegend/>}
+					/>
+					<Line dataKey="length"
+						  type="natural"
+						  stroke="#FFF"
+						  strokeWidth={1.5}
+						  dot={false}
+						  activeDot={{
+							  stroke: "#FFF",
+							  strokeOpacity: 0.4,
+							  strokeWidth: 10,
+						  }}
+					/>
+					<Customized component={<CustomWeekend/>}/>
+				</LineChart>
+			</ResponsiveContainer>
 		</div>
 	)
 }

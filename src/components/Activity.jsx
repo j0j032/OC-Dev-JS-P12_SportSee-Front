@@ -78,6 +78,7 @@ const Activity = ({activityData}) => {
 					<Tooltip labelFormatter={()=>""}
 							 cursor={{fill:"#DFDFDF", opacity:"0.6"}}
 							 content={<CustomTooltip />}
+							 wrapperStyle={{outline:'none'}}
 					/>
 					<Bar dataKey="kilogram"
 						 yAxisId="kilogram"
