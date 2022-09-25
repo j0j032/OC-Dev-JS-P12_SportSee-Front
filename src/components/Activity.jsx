@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Loader from './Loader'
 
 const CustomTooltip = ({payload, active}) => {
@@ -29,7 +29,14 @@ const CustomLegend = () => {
 
 
 const Activity = ({activityData}) => {
+	
 	const {data, isLoading, error} = activityData
+	
+	const formatData = () => {
+		const {sessions} = data
+		const days = ["1","2","3","4","5","6","7"]
+		return days.map((item, index)=>({day:item, poids: sessions[index].kilogram, cals: sessions[index].calories}))
+	}
 	
 	if (error) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
@@ -38,7 +45,7 @@ const Activity = ({activityData}) => {
 				<BarChart
 					width={500}
 					height={300}
-					data={data.sessions}
+					data={formatData()}
 					margin={{
 						top: 5,
 						right: 30,
@@ -55,8 +62,8 @@ const Activity = ({activityData}) => {
 						   tickLine={false}
 						   tick={{fontSize:14}}
 					/>
-					<YAxis dataKey="kilogram"
-						   yAxisId="kilogram"
+					<YAxis dataKey="poids"
+						   yAxisId="poids"
 						   axisLine={false}
 						   domain={["dataMin-2", 'dataMax+1']}
 						   dx={14}
@@ -65,8 +72,8 @@ const Activity = ({activityData}) => {
 						   tick={{fontSize:14}}
 						   orientation='right'
 					/>
-					<YAxis dataKey="calories"
-						   yAxisId="calories"
+					<YAxis dataKey="cals"
+						   yAxisId="cals"
 						   type='number'
 						   hide={true}
 					/>
@@ -80,16 +87,18 @@ const Activity = ({activityData}) => {
 							 content={<CustomTooltip />}
 							 wrapperStyle={{outline:'none'}}
 					/>
-					<Bar dataKey="kilogram"
-						 yAxisId="kilogram"
+					<Bar dataKey="poids"
+						 yAxisId="poids"
 						 fill="black"
 						 radius={[10,10,0,0]}
-						 barSize={10}/>
-					<Bar dataKey="calories"
-						 yAxisId="calories"
+						 barSize={10}
+					/>
+					<Bar dataKey="cals"
+						 yAxisId="cals"
 						 fill="red"
 						 radius={[10,10,0,0]}
-						 barSize={10} />
+						 barSize={10}
+					/>
 				</BarChart>
 			</ResponsiveContainer>
 		</div>
