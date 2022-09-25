@@ -7,6 +7,7 @@ import LateralBar from '../components/LateralBar'
 import Activity from '../components/Activity'
 import KeyInfo from '../components/KeyInfo'
 import AverageSession from '../components/AverageSession'
+import Performance from '../components/Performance'
 import caloriesIcon from '../assets/icons/calories-icon.svg'
 import proteinIcon from '../assets/icons/protein-icon.svg'
 import carbsIcon from '../assets/icons/carbs-icon.svg'
@@ -18,6 +19,7 @@ const Profile = () => {
 	const userInfo = useGet(id)
 	const userActivity = useGet(`${id}/activity`)
 	const userSessions = useGet(`${id}/average-sessions`)
+	const userPerf = useGet(`${id}/performance`)
 	
 	const {userInfos, keyData} = userInfo.data
 	
@@ -39,6 +41,7 @@ const Profile = () => {
 									<Activity activityData={userActivity}/>
 									<div className='secondary-charts-container'>
 										<AverageSession sessionData={userSessions}/>
+										<Performance perfData={userPerf}/>
 									</div>
 								</div>
 								<div className='key-infos__container'>
@@ -57,9 +60,3 @@ const Profile = () => {
 }
 
 export default Profile
-
-
-/*
-	useEffect(() => {
-		axios.get(`http://localhost:3001/user/${id}/performance`).then((res) => console.log(res))
-	}, [])*/
