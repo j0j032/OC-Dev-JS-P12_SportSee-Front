@@ -1,7 +1,16 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
 import Loader from './Loader'
-import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis} from 'recharts'
+import {
+	Customized,
+	Legend,
+	Line,
+	LineChart,
+	ResponsiveContainer,
+	Tooltip,
+	XAxis,
+	YAxis
+} from 'recharts'
 
 const CustomTooltip = ({payload, active}) => {
 	if (active) {
@@ -23,8 +32,14 @@ const CustomLegend = () => {
 	);
 };
 
+const CustomWeekend = () => {
+	return(
+		<rect x='194' className='weekend'></rect>
+	)
+}
 
 const AverageSession = ({sessionData}) => {
+	
 	const {id} = useParams()
 	const {data, isLoading, error} = sessionData
 	
@@ -32,35 +47,44 @@ const AverageSession = ({sessionData}) => {
 		const days = ["L","M","M","J","V","S","D"]
 		return days.map((item, index) => ({day: item, length: data.sessions[index].sessionLength}))
 	}
+	console.log(formatData())
 	
 	if (error || id === undefined) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
 		<div className='sessions-container'>
+			
 			<ResponsiveContainer width="100%" height="100%">
-			<LineChart width="100%" height="100%"
-					   data={formatData()}
-					   margin={{ top: 30, right: 5, left: 5, bottom: 0 }}>
-				<XAxis dataKey="day"
-					   width={258}
-					   axisLine={false}
-					   tickLine={false}
-					   stroke='#fffefc'
-					   tick={{fontSize:14}}
-					   tickMargin={4}
-				/>
-				<Tooltip cursor={false}
-						 content={<CustomTooltip />}
-						 wrapperStyle={{outline:'none'}}
-				/>
-				<Legend verticalAlign='top'
-						content={<CustomLegend/>}
-				/>
-				<Line dataKey="length"
-					  type="basis"
-					  stroke= 'white'
-					  dot={false}
-				/>
-			</LineChart>
+				<LineChart width="100%" height="100%"
+						   data={formatData()}
+						   margin={{ top: 10, right: 15, left: 15, bottom: 10 }}>
+					<XAxis dataKey="day"
+						   stroke='#fffefc'
+						   tickLine={false}
+						   axisLine={false}
+						   tick={{fontSize:12, opacity:0.6}}
+					/>
+					<YAxis hide={true} padding={{top: 80,bottom:40}}/>
+					<Tooltip content={<CustomTooltip />}
+							 cursor={{
+								 strokeOpacity:0,
+							 }}
+					/>
+					<Legend verticalAlign='top'
+							content={<CustomLegend/>}
+					/>
+					<Line dataKey="length"
+						  type="natural"
+						  stroke="#FFF"
+						  strokeWidth={1.5}
+						  dot={false}
+						  activeDot={{
+							  stroke: "#FFF",
+							  strokeOpacity: 0.4,
+							  strokeWidth: 10,
+						  }}
+					/>
+					<Customized component={<CustomWeekend/>}/>
+				</LineChart>
 			</ResponsiveContainer>
 		</div>
 	)
