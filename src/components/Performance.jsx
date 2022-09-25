@@ -19,7 +19,6 @@ const Performance = ({perfData}) => {
 	
 	const kindInFrench = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité']
 	const formatData = () => data.data.map((item, index)=>({name:kindInFrench[index], value: item.value}))
-	console.log(formatData())
 	
 	if (error) return <span>Oups ! il y a eu un problème</span>
 	return isLoading ? (<Loader/>) : (
