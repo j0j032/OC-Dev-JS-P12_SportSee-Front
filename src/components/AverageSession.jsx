@@ -1,7 +1,7 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
 import Loader from './Loader'
-import { AreaChart, LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip, Legend} from 'recharts';
+import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis} from 'recharts'
 
 const CustomTooltip = ({payload, active}) => {
 	if (active) {
@@ -27,14 +27,18 @@ const CustomLegend = () => {
 const AverageSession = ({sessionData}) => {
 	const {id} = useParams()
 	const {data, isLoading, error} = sessionData
-	console.log(data.sessions)
+	
+	const formatData = () => {
+		const days = ["L","M","M","J","V","S","D"]
+		return days.map((item, index) => ({day: item, length: data.sessions[index].sessionLength}))
+	}
 	
 	if (error || id === undefined) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
 		<div className='sessions-container'>
 			<ResponsiveContainer width="100%" height="100%">
 			<LineChart width="100%" height="100%"
-					   data={data.sessions}
+					   data={formatData()}
 					   margin={{ top: 30, right: 5, left: 5, bottom: 0 }}>
 				<XAxis dataKey="day"
 					   width={258}
@@ -51,7 +55,7 @@ const AverageSession = ({sessionData}) => {
 				<Legend verticalAlign='top'
 						content={<CustomLegend/>}
 				/>
-				<Line dataKey="sessionLength"
+				<Line dataKey="length"
 					  type="basis"
 					  stroke= 'white'
 					  dot={false}
