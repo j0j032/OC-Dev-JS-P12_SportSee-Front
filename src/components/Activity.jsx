@@ -34,8 +34,7 @@ const Activity = ({activityData}) => {
 	
 	const formatData = () => {
 		const {sessions} = data
-		const days = ["1","2","3","4","5","6","7"]
-		return days.map((item, index)=>({day:item, poids: sessions[index].kilogram, cals: sessions[index].calories}))
+		return sessions.map((item, index)=>({day:index+1, poids: sessions[index].kilogram, cals: sessions[index].calories}))
 	}
 	
 	if (error) return <span>Oups il y a eu un problème</span>

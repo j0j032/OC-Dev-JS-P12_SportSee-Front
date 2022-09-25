@@ -12,6 +12,7 @@ import caloriesIcon from '../assets/icons/calories-icon.svg'
 import proteinIcon from '../assets/icons/protein-icon.svg'
 import carbsIcon from '../assets/icons/carbs-icon.svg'
 import fatIcon from '../assets/icons/fat-icon.svg'
+import Goal from '../components/Goal'
 
 const Profile = () => {
 	const {id} = useParams()
@@ -21,7 +22,7 @@ const Profile = () => {
 	const userSessions = useGet(`${id}/average-sessions`)
 	const userPerf = useGet(`${id}/performance`)
 	
-	const {userInfos, keyData} = userInfo.data
+	const {userInfos, keyData, score} = userInfo.data
 	
 	if (userInfo.error || id === undefined) return <span>Oups il y a eu un problème</span>
 	return (
@@ -42,6 +43,7 @@ const Profile = () => {
 									<div className='secondary-charts-container'>
 										<AverageSession sessionData={userSessions}/>
 										<Performance perfData={userPerf}/>
+										<Goal score={score}/>
 									</div>
 								</div>
 								<div className='key-infos__container'>
