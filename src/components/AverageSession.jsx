@@ -1,5 +1,4 @@
 import React from 'react'
-import {useParams} from 'react-router-dom'
 import Loader from './Loader'
 import {
 	Customized,
@@ -40,16 +39,14 @@ const CustomWeekend = () => {
 
 const AverageSession = ({sessionData}) => {
 	
-	const {id} = useParams()
 	const {data, isLoading, error} = sessionData
 	
 	const formatData = () => {
 		const days = ["L","M","M","J","V","S","D"]
 		return days.map((item, index) => ({day: item, length: data.sessions[index].sessionLength}))
 	}
-	console.log(formatData())
 	
-	if (error || id === undefined) return <span>Oups il y a eu un problème</span>
+	if (error) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
 		<div className='sessions-container'>
 			
