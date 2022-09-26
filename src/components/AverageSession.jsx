@@ -33,7 +33,7 @@ const CustomLegend = () => {
 
 const CustomWeekend = () => {
 	return(
-		<rect x='194' className='weekend'></rect>
+		<rect x='202' className='weekend'></rect>
 	)
 }
 
