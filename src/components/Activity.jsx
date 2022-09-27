@@ -37,7 +37,6 @@ const CustomLegend = () => {
 		);
 };
 
-
 /**
  * Component to display the Activity chart using Recharts library
  * @param {object} activityData
@@ -46,15 +45,13 @@ const CustomLegend = () => {
  */
 const Activity = ({activityData}) => {
 	const {data, isLoading, error} = activityData
-	
+	const {sessions} = data
+	console.log(sessions)
 	/**
 	 * Method to replace the default Xaxis data (date) by numbers (1,2,3....) using index
-	 * @returns {object}
-	 */
-	const formatData = () => {
-		const {sessions} = data
-		return sessions.map((item, index)=>({day:index+1, poids: sessions[index].kilogram, cals: sessions[index].calories}))
-	}
+	 * @returns {array} of {{object} {day: {number}, poids: {number}, cals:{number}}}	 */
+	const formatData = () => sessions.map((item, index)=>({day:index+1, poids: sessions[index].kilogram, cals: sessions[index].calories}))
+	
 	if (error) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
 		<div className='activity-container'>
@@ -134,6 +131,11 @@ Activity.propTypes = {
 	isLoading: PropTypes.bool,
 	error:PropTypes.bool,
 	data:PropTypes.object,
+	sessions:PropTypes.arrayOf(PropTypes.shape({
+		day:PropTypes.string,
+		calories: PropTypes.number,
+		kilogram: PropTypes.number,
+	})),
 	formatData:PropTypes.arrayOf(PropTypes.shape({
 		day: PropTypes.number,
 		calories: PropTypes.number,
