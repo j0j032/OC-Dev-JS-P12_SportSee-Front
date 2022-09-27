@@ -3,18 +3,20 @@ import {RadialBarChart, RadialBar, ResponsiveContainer,} from "recharts";
 import PropTypes from 'prop-types'
 
 /**
- * Component to display the user goal score chart using Recharts library
- * @param {number} score
+ * Component to display the user goal score chart using [Recharts RadialBarChart]{@link  https://recharts.org/en-US/api/RadialBarChart}
+ *
+ * @component
+ * @param {number} score user goal score
  * @returns {JSX.Element}
- * [Recharts RadialBarChart doc]{@link  https://recharts.org/en-US/api/RadialBarChart}
  */
 const Goal = ({score}) => {
 	
 	/**
-	 * Method to embed the score in a recharts readable Data
+	 * Goal formatData method to embed the score in a recharts readable Data
 	 * if user hasn't got score then we set the score to 0
 	 * The second object of the array (index[1]) is a ref for 100% and compare the user score
-	 * @returns {array} of {{object} {title: {string}, score: {number}, fill:{string}}}
+	 * @method formatData
+	 * @returns {Array.<{title: string, score: number, fill:string}>}
 	 */
 	const formatData = () => {
 		return [

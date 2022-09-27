@@ -34,19 +34,27 @@ const CustomLegend = () => {
 };
 
 /**
- * Component to display the Average sessions chart using Recharts library
+ * Component to display the Average sessions chart using [Recharts LineChart]{@link  https://recharts.org/en-US/api/LineChart}
+ *
+ * @component
  * @param {object} sessionData
+ * @property {Boolean} isLoading true loader display / false component mounted
+ * @property {Boolean} error true error display / false component mounted
+ * @property {Object} data
+ * @property {Array.<{day: number, sessionLength:number }>} data.sessions
+ * @property {number} data.userId
  * @returns {JSX.Element}
- * [Recharts LineChart doc]{@link  https://recharts.org/en-US/api/LineChart}
  */
 const AverageSession = ({sessionData}) => {
 	const {data, isLoading, error} = sessionData
 	const days = ["L","M","M","J","V","S","D"]
 	
 	/**
-	 * Method to replace the default Xaxis data (numbers) by days of the week (L,M,M...) using
+	 * AverageSessions formatData method to replace the default Xaxis data (numbers) by days of the
+	 * week (L,M,M...) using
 	 * days array
-	 * @returns {array} of {{object} {day: {string}, length: {number}}}
+	 * @method formatData
+	 * @returns {Array.<{day: string, length: number}>}
 	 */
 	const formatData = () => days.map((item, index) => ({day: item, length: data.sessions[index].sessionLength}))
 	

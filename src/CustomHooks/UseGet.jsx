@@ -9,10 +9,8 @@ import PropTypes from 'prop-types'
  * to get the data you need.
  * @returns {{isLoading: {boolean}, data: {object}, error: {boolean}}}
  * @example
- *
  * const userActivity useGet(id+'/activity')
  * Then you can use userActivity.data || userActivity.error || userActivity.isLoading
- *
  */
 export const useGet = (endPoint) => {
 	const [data, setData] = useState({})

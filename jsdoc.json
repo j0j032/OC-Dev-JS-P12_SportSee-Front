@@ -1,0 +1,29 @@
+{
+  "source": {
+    "includePattern": ".+\\.js(doc|x)?$",
+    "include": ["."],
+    "exclude": ["node_modules","data","style"]
+  },
+  "recurseDepth": 10,
+  "opts": {
+    "destination": "docs",
+    "recurse": true
+  },
+  "templates": {
+    "systemName"            : "SportSee: User Dashboard",
+    "footer"                : "https://github.com/j0j032",
+    "copyright"             : "SportSee 2022",
+    "includeDate"           : "false",
+    "navType"               : "vertical",
+    "theme"                 : "simplex",
+    "linenums"              : "false",
+    "collapseSymbols"       : "true",
+    "inverseNav"            : "false",
+    "outputSourceFiles"     : "true" ,
+    "outputSourcePath"      : "false",
+    "dateFormat"            : "moment().format(\"dddd, MMMM Do YYYY, h:mm:ss a\")",
+    "syntaxTheme"           : "default",
+    "sort"					: "true",
+    "search"                : "true"
+  }
+}
