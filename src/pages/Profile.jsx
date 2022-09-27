@@ -1,6 +1,6 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
-import {useGet} from '../components/useGetDatas'
+import {useGet} from '../CustomHooks/UseGet'
 import Loader from '../components/Loader'
 import Header from '../components/Header'
 import LateralBar from '../components/LateralBar'
@@ -8,15 +8,22 @@ import Activity from '../components/Activity'
 import KeyInfo from '../components/KeyInfo'
 import AverageSession from '../components/AverageSession'
 import Performance from '../components/Performance'
+import Goal from '../components/Goal'
 import caloriesIcon from '../assets/icons/calories-icon.svg'
 import proteinIcon from '../assets/icons/protein-icon.svg'
 import carbsIcon from '../assets/icons/carbs-icon.svg'
 import fatIcon from '../assets/icons/fat-icon.svg'
-import Goal from '../components/Goal'
+import PropTypes from "prop-types"
 
+
+/**
+ * Component for showing user dashboard (Profil in navbar)
+ *
+ * @component
+ * @returns {JSX.Element} that contains user data and display every chart component
+ */
 const Profile = () => {
 	const {id} = useParams()
-	
 	const userInfo = useGet(id)
 	const userActivity = useGet(`${id}/activity`)
 	const userSessions = useGet(`${id}/average-sessions`)
@@ -40,9 +47,7 @@ const Profile = () => {
 								</div>
 								<div className='dashboard'>
 									<div className='charts'>
-
 										<Activity activityData={userActivity}/>
-
 										<div className='secondary-charts-container'>
 											<AverageSession sessionData={userSessions}/>
 											<Performance perfData={userPerf}/>
@@ -66,3 +71,14 @@ const Profile = () => {
 }
 
 export default Profile
+
+Profile.propTypes = {
+	id: PropTypes.string,
+	userinfo: PropTypes.object,
+	userinfos: PropTypes.object,
+	keyData: PropTypes.object,
+	score: PropTypes.number,
+	userActivity: PropTypes.object,
+	userSessions: PropTypes.object,
+	userPerf: PropTypes.object
+}
