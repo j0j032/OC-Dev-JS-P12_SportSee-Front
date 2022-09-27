@@ -2,10 +2,13 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import logo from '../assets/logos/sportSee-logo.svg'
 import provisionalConfig from '../config'
+import PropTypes from 'prop-types'
 
-
+/**
+ * Component for showing the header and navigation
+ * @returns {JSX.Element}
+ */
 const Header = () => {
-	
 	const userId = provisionalConfig().userId
 	
 	return (
@@ -36,3 +39,7 @@ const Header = () => {
 }
 
 export default Header
+
+Header.propTypes = {
+	userId: PropTypes.string
+}
