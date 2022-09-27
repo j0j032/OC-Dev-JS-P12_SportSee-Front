@@ -1,8 +1,9 @@
 .welcome{
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
   margin-bottom: 40px;
+ 
   >h1{
 	font-size:48px ;
 	>span{
@@ -14,15 +15,35 @@
   }
 }
 .dashboard{
-  display: flex;
-  justify-content: space-between;
-  height: 70%;
+  width: 100%;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 72% 26%;
+  grid-template-rows: fit-content(0%);
+  gap: 0 2%;
+  grid-template-areas:
+    ". .";
+  @include largeScreens{
+	grid-template-columns: 76% 22%;
+  }
+}
+.charts{
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 54% 42% ;
+  gap: 4% 0;
+  grid-template-areas:
+    "."
+    ".";
+  width: 100%;
+  height: fit-content;
+  align-content: center;
 }
 .secondary-charts-container{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 263px;
-  gap: 0 16px;
+  grid-template-columns: 32% 32% 32%;
+  grid-template-rows: fit-content(100%);
+  gap: 0 2%;
   grid-template-areas:
     ". . .";
 }
@@ -31,24 +52,29 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 3.5%;
+  @include largeScreens{
+  gap: 7.5%;
+  }
   height: 100%;
+  width: 100%;
 }
 
 .key-info{
   display: flex;
   flex-direction: column;
   
-  &__icon{
-	margin-left: 32px;
-  }
- 
   &__container{
 	display: flex;
 	align-items: center;
-	gap: 24px;
+	gap: 18px;
 	background-color: #FBFBFB;
-	width: 258px;
-	height: 124px;
+	width: 100%;
+	border-radius: 5px;
+	padding: 15px 20px;
+	@include largeScreens{
+	  min-height:124px ;
+	}
   }
   &__value{
 	display: flex;

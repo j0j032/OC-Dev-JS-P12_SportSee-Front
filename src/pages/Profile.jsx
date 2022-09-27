@@ -32,25 +32,29 @@ const Profile = () => {
 				<LateralBar/>
 				{userInfo.isLoading? (<Loader/>
 					):(
-						<div className='content content-profile'>
-							<div className='welcome'>
-								<h1>Bonjour <span>{`${userInfos.firstName}`}</span></h1>
-								<p>Félicitations! Vous avez explosé vos objectifs hier 👏</p>
-							</div>
-							<div className='dashboard'>
-								<div className='charts'>
-									<Activity activityData={userActivity}/>
-									<div className='secondary-charts-container'>
-										<AverageSession sessionData={userSessions}/>
-										<Performance perfData={userPerf}/>
-										<Goal score={score}/>
-									</div>
+						<div className='content' >
+							<div className='content-profile'>
+								<div className='welcome'>
+									<h1>Bonjour <span>{`${userInfos.firstName}`}</span></h1>
+									<p>Félicitations! Vous avez explosé vos objectifs hier 👏</p>
 								</div>
-								<div className='key-infos__container'>
-									<KeyInfo className='key-info' keyData={keyData.calorieCount} img={caloriesIcon} unit={'kCal'} category={'Calories'}/>
-									<KeyInfo className='key-info' keyData={keyData.proteinCount} img={proteinIcon} unit={'g'} category={'Proteines'}/>
-									<KeyInfo className='key-info' keyData={keyData.carbohydrateCount} img={carbsIcon} unit={'g'} category={'Glucides'}/>
-									<KeyInfo className='key-info' keyData={keyData.lipidCount} img={fatIcon} unit={'g'} category={'Lipides'}/>
+								<div className='dashboard'>
+									<div className='charts'>
+
+										<Activity activityData={userActivity}/>
+
+										<div className='secondary-charts-container'>
+											<AverageSession sessionData={userSessions}/>
+											<Performance perfData={userPerf}/>
+											<Goal score={score}/>
+										</div>
+									</div>
+									<div className='key-infos__container'>
+										<KeyInfo className='key-info' keyData={keyData.calorieCount} img={caloriesIcon} unit={'kCal'} category={'Calories'}/>
+										<KeyInfo className='key-info' keyData={keyData.proteinCount} img={proteinIcon} unit={'g'} category={'Proteines'}/>
+										<KeyInfo className='key-info' keyData={keyData.carbohydrateCount} img={carbsIcon} unit={'g'} category={'Glucides'}/>
+										<KeyInfo className='key-info' keyData={keyData.lipidCount} img={fatIcon} unit={'g'} category={'Lipides'}/>
+									</div>
 								</div>
 							</div>
 						</div>

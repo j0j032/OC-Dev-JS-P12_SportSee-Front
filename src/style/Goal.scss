@@ -1,12 +1,11 @@
 .goal-container{
   position: relative;
-  width: 100%;
-  height: 100%;
   border-radius: 5px;
   background-color:$light-grey;
+  aspect-ratio: 1/1;
   >h6{
     position: absolute;
-    top: 20px;
+    top: 18px;
     left: 20px;
     font-size: 15px;
   }

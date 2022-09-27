@@ -31,12 +31,6 @@ const CustomLegend = () => {
 	);
 };
 
-const CustomWeekend = () => {
-	return(
-		<rect x='194' className='weekend'></rect>
-	)
-}
-
 const AverageSession = ({sessionData}) => {
 	
 	const {data, isLoading, error} = sessionData
@@ -49,40 +43,42 @@ const AverageSession = ({sessionData}) => {
 	if (error) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
 		<div className='sessions-container'>
-			
-			<ResponsiveContainer width="100%" height="100%">
-				<LineChart width="100%" height="100%"
-						   data={formatData()}
-						   margin={{ top: 10, right: 15, left: 15, bottom: 10 }}>
-					<XAxis dataKey="day"
-						   stroke='#fffefc'
-						   tickLine={false}
-						   axisLine={false}
-						   tick={{fontSize:12, opacity:0.6}}
-					/>
-					<YAxis hide={true} padding={{top: 80,bottom:40}}/>
-					<Tooltip content={<CustomTooltip />}
-							 cursor={{
-								 strokeOpacity:0,
-							 }}
-					/>
-					<Legend verticalAlign='top'
-							content={<CustomLegend/>}
-					/>
-					<Line dataKey="length"
-						  type="natural"
-						  stroke="#FFF"
-						  strokeWidth={1.5}
-						  dot={false}
-						  activeDot={{
-							  stroke: "#FFF",
-							  strokeOpacity: 0.4,
-							  strokeWidth: 10,
-						  }}
-					/>
-					<Customized component={<CustomWeekend/>}/>
-				</LineChart>
-			</ResponsiveContainer>
+			<div className='WEE'></div>
+			<div className='WE'>
+				<ResponsiveContainer width="100%" height="100%">
+					<LineChart width="100%" height="100%"
+							   data={formatData()}
+							   margin={{ top: 10, right: 15, left: 15, bottom: 10 }}>
+						<XAxis dataKey="day"
+							   stroke='#fffefc'
+							   tickLine={false}
+							   axisLine={false}
+							   tick={{fontSize:12, opacity:0.6}}
+						/>
+						<YAxis hide={true} padding={{top: 80,bottom:40}}/>
+						<Tooltip content={<CustomTooltip />}
+								 cursor={{
+									 strokeOpacity:0,
+								 }}
+								 wrapperStyle={{outline:'none'}}
+						/>
+						<Legend verticalAlign='top'
+								content={<CustomLegend/>}
+						/>
+						<Line dataKey="length"
+							  type="natural"
+							  stroke="#FFF"
+							  strokeWidth={1.5}
+							  dot={false}
+							  activeDot={{
+								  stroke: "#FFF",
+								  strokeOpacity: 0.4,
+								  strokeWidth: 10,
+							  }}
+						/>
+					</LineChart>
+				</ResponsiveContainer>
+			</div>
 		</div>
 	)
 }

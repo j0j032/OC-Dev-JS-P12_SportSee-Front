@@ -1,7 +1,8 @@
-@import './style/variables';
+@import "src/style/breakpoints";
+@import "src/style/App";
+@import "src/style/variables";
 @import './style/mixins';
 @import './style/reset';
-@import './style/App';
 @import './style/Header';
 @import './style/LaterlBar';
 @import './style/Activity';

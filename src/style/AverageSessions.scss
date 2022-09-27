@@ -1,10 +1,23 @@
 .sessions-container{
   position: relative;
   background-color: red;
+  border-radius: 5px;
+  aspect-ratio: 1/1;
+}
+.WE{
+  position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 5px;
 }
+.WEE{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 28%;
+  background: rgba(0, 0, 0, 0.07);
+}
+
 .weekend{
   width: 78px;
   height: 100%;
@@ -16,7 +29,7 @@
   position: absolute;
   top: 10px;
   left: 5px;
-  width: 148px;
+  width: 70%;
   color: white;
   opacity: 0.4;
   font-size: 15px;

@@ -4,10 +4,13 @@ a{
 }
 .header {
   &__container {
+	height: 100px;
+	position: fixed;
+	width: 100%;
 	z-index: 4;
-	padding: 20px 72px 20px 20px;
+	padding: 20px 88px 20px 20px;
 	background-color:$black;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+	//box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   }
   
   &__nav {
@@ -18,7 +21,7 @@ a{
 	font-weight: 500;
 	width: 100%;
 	list-style: none;
-	
+	padding-inline-start: 0;
 	&-link {
 	  color: $white;
 	  &:hover{
