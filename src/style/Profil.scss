@@ -15,36 +15,36 @@
   }
 }
 .dashboard{
-  background: #D38383;
-  //height: fit-content;
   width: 100%;
   display: grid;
-  grid-template-columns: 77% 21%;
+  grid-template-columns: 72% 26%;
   grid-template-rows: auto;
   gap: 0 2%;
   grid-template-areas:
     ". .";
+  @include largeScreens{
+	grid-template-columns: 76% 22%;
+  }
 }
 .charts{
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 54% 44%;
-  gap: 2% 0;
+  grid-template-rows: 54% 43% ;
+  gap: 3% 0;
   grid-template-areas:
     "."
     ".";
   width: 100%;
-  background: #8098EC;
-  overflow: scroll;
+  
 }
 .secondary-charts-container{
   display: grid;
   grid-template-columns: 32% 32% 32%;
-  grid-template-rows: auto;
+  grid-template-rows: 100%;
   gap: 0 2%;
   grid-template-areas:
     ". . .";
-  background: #253173;
+  align-content: center;
 }
 
 .key-infos__container{
@@ -60,18 +60,18 @@
   flex-direction: column;
   
   &__icon{
-	margin-left: 24px;
+	margin-left: 18px;
   }
  
   &__container{
 	display: flex;
 	align-items: center;
-	gap: 24px;
+	gap: 18px;
 	background-color: #FBFBFB;
 	width: 100%;
-	min-width: 240px;
 	height: 124px;
 	border-radius: 5px;
+	padding-right: 10px;
   }
   &__value{
 	display: flex;

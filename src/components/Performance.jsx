@@ -26,11 +26,12 @@ const Performance = ({perfData}) => {
 			<ResponsiveContainer width="100%" height="100%">
 				<RadarChart data={formatData().reverse()}
 							cx="50%" cy="50%"
-							outerRadius="70%">
+							outerRadius="55%"
+							margin={{ top: 15, right: 15, left: 15, bottom: 15 }}>
 					<PolarGrid radialLines={false}/>
 					<PolarAngleAxis dataKey="name"
 									stroke='#fffefc'
-									tick={<CustomTicks cx={320} cy={90}/>}
+									tick={<CustomTicks cx={100} cy={70}/>}
 									tickLine={false}
 									dy={0}
 					/>

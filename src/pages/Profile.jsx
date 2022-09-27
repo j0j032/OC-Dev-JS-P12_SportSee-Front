@@ -40,7 +40,9 @@ const Profile = () => {
 								</div>
 								<div className='dashboard'>
 									<div className='charts'>
+
 										<Activity activityData={userActivity}/>
+
 										<div className='secondary-charts-container'>
 											<AverageSession sessionData={userSessions}/>
 											<Performance perfData={userPerf}/>
@@ -48,10 +50,10 @@ const Profile = () => {
 										</div>
 									</div>
 									<div className='key-infos__container'>
-										{/*<KeyInfo className='key-info' keyData={keyData.calorieCount} img={caloriesIcon} unit={'kCal'} category={'Calories'}/>
+										<KeyInfo className='key-info' keyData={keyData.calorieCount} img={caloriesIcon} unit={'kCal'} category={'Calories'}/>
 										<KeyInfo className='key-info' keyData={keyData.proteinCount} img={proteinIcon} unit={'g'} category={'Proteines'}/>
 										<KeyInfo className='key-info' keyData={keyData.carbohydrateCount} img={carbsIcon} unit={'g'} category={'Glucides'}/>
-										<KeyInfo className='key-info' keyData={keyData.lipidCount} img={fatIcon} unit={'g'} category={'Lipides'}/>*/}
+										<KeyInfo className='key-info' keyData={keyData.lipidCount} img={fatIcon} unit={'g'} category={'Lipides'}/>
 									</div>
 								</div>
 							</div>
