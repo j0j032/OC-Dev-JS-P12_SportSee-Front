@@ -6,14 +6,14 @@ import Activity from './Activity'
 
 /**
  * To add padding between the chart and labels
- * @param {array} payload
- * @param {number} x
- * @param {number} y
- * @param {number} cx
- * @param {number} cy
- * @param {object} rest
- * @returns {JSX.Element}
  * [StackOverflow Ressource]{@link https://stackoverflow.com/questions/65447592/recharts-is-there-a-way-to-add-a-padding-between-the-chart-and-labels-for-rada }
+ * @param {array} payload
+ * @param {number} x position
+ * @param {number} y position
+ * @param {number} cx position
+ * @param {number} cy position
+ * @param {object} rest position
+ * @returns {JSX.Element}
  */
 const CustomTicks = ({payload, x, y, cx, cy, ...rest}) => {
 	return (
@@ -22,26 +22,33 @@ const CustomTicks = ({payload, x, y, cx, cy, ...rest}) => {
 		</text>
 	)
 }
-
 /**
- * Component to display the Performance chart using Recharts library
- * @param {object} perfData
+ * Component to display the Performance chart using [Recharts RadarChart]{@link  https://recharts.org/en-US/api/RadarChart}
+ *
+ * @component
+ * @param {Object} perfData
+ * @property {Boolean} isLoading true loader display / false component mounted
+ * @property {Boolean} error true error display / false component mounted
+ * @property {Object} data
+ * @property {Array.<{value: number, kind:number }>}  data.data
+ * @property {{number: String}} data.kind to set property key
+ * @property {number} data.userId
  * @returns {JSX.Element}
- * [Recharts RadarChart doc]{@link  https://recharts.org/en-US/api/RadarChart}
  */
 const Performance = ({perfData}) => {
 	const {data, error, isLoading} = perfData
 	const kindInFrench = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité']
-
-//  To get original data in english
-//	const {kind} = data
-//	const formatData = () => data.data.map((item, index)=>({name:kind[index+1], value: item.value}))
 	
 	/**
-	 * To translate the labels in French using kindInFrenchArray
-	 * @returns {array} of {{object} {name: {string}, value: {number}}}
+	 * Performance formatData Method to translate the labels in French using kindInFrenchArray
+	 * @method formatData
+	 * @returns  {Array.<{name: string, value: number}>}
 	 */
 	const formatData = () => data.data.map((item, index)=>({name:kindInFrench[index], value: item.value}))
+	//  To get original data (english)
+	//	const {kind} = data
+	//	const formatData = () => data.data.map((item, index)=>({name:kind[index+1], value: item.value}))
+	
 	
 	if (error) return <span>Oups ! il y a eu un problème</span>
 	return isLoading ? (<Loader/>) : (
@@ -70,7 +77,7 @@ const Performance = ({perfData}) => {
 
 export default Performance
 
-Activity.propTypes = {
+Performance.propTypes = {
 	perfData: PropTypes.object,
 	isLoading: PropTypes.bool,
 	error:PropTypes.bool,

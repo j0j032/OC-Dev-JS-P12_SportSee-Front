@@ -10,7 +10,7 @@
     "recurse": true
   },
   "templates": {
-    "systemName"            : "Dashboard",
+    "systemName"            : "SportSee: User Dashboard",
     "footer"                : "https://github.com/j0j032",
     "copyright"             : "SportSee 2022",
     "includeDate"           : "false",
