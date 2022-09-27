@@ -40,7 +40,7 @@
 
 // Large screens
 @mixin largeScreens{
-  $breakpoints:(largeScreens:1201px);
+  $breakpoints:(largeScreens:1250px);
   @media screen and (min-width:map-get($breakpoints, largeScreens)) {
 	@content;
   }

@@ -60,6 +60,7 @@ const AverageSession = ({sessionData}) => {
 								 cursor={{
 									 strokeOpacity:0,
 								 }}
+								 wrapperStyle={{outline:'none'}}
 						/>
 						<Legend verticalAlign='top'
 								content={<CustomLegend/>}
