@@ -134,8 +134,8 @@ Activity.propTypes = {
 	isLoading: PropTypes.bool,
 	error:PropTypes.bool,
 	data:PropTypes.object,
-	sessions:PropTypes.arrayOf(PropTypes.shape({
-		day: PropTypes.number, //After formating (before formating Proptype = string (date))
+	formatData:PropTypes.arrayOf(PropTypes.shape({
+		day: PropTypes.number,
 		calories: PropTypes.number,
 		kilogram: PropTypes.number,
 	}))
