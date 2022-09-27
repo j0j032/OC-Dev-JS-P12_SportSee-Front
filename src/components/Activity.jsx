@@ -1,7 +1,14 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Loader from './Loader'
+import PropTypes, {object} from 'prop-types'
 
+/**
+ * Set a custom infos when hover the chart
+ * @param {array} payload
+ * @param {boolean} active
+ * @returns {JSX.Element|null}
+ */
 const CustomTooltip = ({payload, active}) => {
 	if (active) {
 		return (
@@ -11,10 +18,13 @@ const CustomTooltip = ({payload, active}) => {
 			</div>
 		);
 	}
-	
-	return null;
+	return null
 };
 
+/**
+ * Set a custom legend
+ * @returns {JSX.Element}
+ */
 const CustomLegend = () => {
 		return (
 			<div className="custom-legend">
@@ -27,15 +37,20 @@ const CustomLegend = () => {
 		);
 };
 
-
+/**
+ * Component to display the Activity chart using Recharts library
+ * @param {object} activityData
+ * @returns {JSX.Element}
+ * [Recharts BarChart doc]{@link  https://recharts.org/en-US/api/BarChart}
+ */
 const Activity = ({activityData}) => {
-	
 	const {data, isLoading, error} = activityData
-	
-	const formatData = () => {
-		const {sessions} = data
-		return sessions.map((item, index)=>({day:index+1, poids: sessions[index].kilogram, cals: sessions[index].calories}))
-	}
+	const {sessions} = data
+	console.log(sessions)
+	/**
+	 * Method to replace the default Xaxis data (date) by numbers (1,2,3....) using index
+	 * @returns {array} of {{object} {day: {number}, poids: {number}, cals:{number}}}	 */
+	const formatData = () => sessions.map((item, index)=>({day:index+1, poids: sessions[index].kilogram, cals: sessions[index].calories}))
 	
 	if (error) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
@@ -106,3 +121,24 @@ const Activity = ({activityData}) => {
 
 export default Activity
 
+CustomTooltip.propTypes = {
+	payload: PropTypes.array,
+	active: PropTypes.bool
+}
+
+Activity.propTypes = {
+	activityData: PropTypes.object,
+	isLoading: PropTypes.bool,
+	error:PropTypes.bool,
+	data:PropTypes.object,
+	sessions:PropTypes.arrayOf(PropTypes.shape({
+		day:PropTypes.string,
+		calories: PropTypes.number,
+		kilogram: PropTypes.number,
+	})),
+	formatData:PropTypes.arrayOf(PropTypes.shape({
+		day: PropTypes.number,
+		calories: PropTypes.number,
+		kilogram: PropTypes.number,
+	}))
+}

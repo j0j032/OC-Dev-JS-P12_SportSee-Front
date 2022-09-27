@@ -1,16 +1,15 @@
 import React from 'react'
 import Loader from './Loader'
-import {
-	Customized,
-	Legend,
-	Line,
-	LineChart,
-	ResponsiveContainer,
-	Tooltip,
-	XAxis,
-	YAxis
-} from 'recharts'
+import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
+import PropTypes, {object} from 'prop-types'
+import Activity from './Activity'
 
+/**
+ * Set a custom infos when hover the chart
+ * @param {array} payload
+ * @param {boolean} active
+ * @returns {JSX.Element|null}
+ */
 const CustomTooltip = ({payload, active}) => {
 	if (active) {
 		return (
@@ -19,10 +18,13 @@ const CustomTooltip = ({payload, active}) => {
 			</div>
 		);
 	}
-	
-	return null;
+	return null
 };
 
+/**
+ * Set a custom legend
+ * @returns {JSX.Element}
+ */
 const CustomLegend = () => {
 	return (
 		<div className="custom-legend--sessions">
@@ -31,14 +33,22 @@ const CustomLegend = () => {
 	);
 };
 
+/**
+ * Component to display the Average sessions chart using Recharts library
+ * @param {object} sessionData
+ * @returns {JSX.Element}
+ * [Recharts LineChart doc]{@link  https://recharts.org/en-US/api/LineChart}
+ */
 const AverageSession = ({sessionData}) => {
-	
 	const {data, isLoading, error} = sessionData
+	const days = ["L","M","M","J","V","S","D"]
 	
-	const formatData = () => {
-		const days = ["L","M","M","J","V","S","D"]
-		return days.map((item, index) => ({day: item, length: data.sessions[index].sessionLength}))
-	}
+	/**
+	 * Method to replace the default Xaxis data (numbers) by days of the week (L,M,M...) using
+	 * days array
+	 * @returns {array} of {{object} {day: {string}, length: {number}}}
+	 */
+	const formatData = () => days.map((item, index) => ({day: item, length: data.sessions[index].sessionLength}))
 	
 	if (error) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
@@ -84,3 +94,20 @@ const AverageSession = ({sessionData}) => {
 }
 
 export default AverageSession
+
+CustomTooltip.propTypes = {
+	payload: PropTypes.array,
+	active: PropTypes.bool
+}
+
+Activity.propTypes = {
+	sessionData: PropTypes.object,
+	isLoading: PropTypes.bool,
+	error:PropTypes.bool,
+	data:PropTypes.object,
+	days:PropTypes.array,
+	formatData:PropTypes.arrayOf(PropTypes.shape({
+		day: PropTypes.string, //After formating (before formating Proptype = string (date))
+		length: PropTypes.number,
+	}))
+}
