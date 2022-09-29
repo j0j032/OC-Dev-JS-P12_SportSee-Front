@@ -63,8 +63,6 @@ export default Goal
 
 Goal.propTypes = {
 	formatData:PropTypes.arrayOf(PropTypes.shape({
-		title: PropTypes.string,
 		score: PropTypes.number,
-		fill: PropTypes.string,
 	}))
 }

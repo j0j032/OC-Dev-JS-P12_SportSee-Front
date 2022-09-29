@@ -39,14 +39,13 @@ const CustomLegend = () => {
  * @component
  * @param {object} sessionData
  * @property {Boolean} isLoading true loader display / false component mounted
- * @property {Boolean} error true error display / false component mounted
  * @property {Object} data
  * @property {Array.<{day: number, sessionLength:number }>} data.sessions
  * @property {number} data.userId
  * @returns {JSX.Element}
  */
 const AverageSession = ({sessionData}) => {
-	const {data, isLoading, error} = sessionData
+	const {data, isLoading} = sessionData
 	const days = ["L","M","M","J","V","S","D"]
 	
 	/**
@@ -58,7 +57,6 @@ const AverageSession = ({sessionData}) => {
 	 */
 	const formatData = () => days.map((item, index) => ({day: item, length: data.sessions[index].sessionLength}))
 	
-	if (error) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
 		<div className='sessions-container'>
 			<div className='WEE'></div>
@@ -111,7 +109,6 @@ CustomTooltip.propTypes = {
 Activity.propTypes = {
 	sessionData: PropTypes.object,
 	isLoading: PropTypes.bool,
-	error:PropTypes.bool,
 	data:PropTypes.object,
 	days:PropTypes.array,
 	formatData:PropTypes.arrayOf(PropTypes.shape({

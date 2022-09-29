@@ -1,5 +1,9 @@
 import React from 'react'
 
+/**
+ * Loader
+ * @returns {JSX.Element}
+ */
 const Loader = () => {
 	return (
 		<div className='content'>

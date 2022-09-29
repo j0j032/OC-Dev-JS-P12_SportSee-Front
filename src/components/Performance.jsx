@@ -27,7 +27,6 @@ const CustomTicks = ({payload, x, y, cx, cy, ...rest}) => {
  * @component
  * @param {Object} perfData
  * @property {Boolean} isLoading true loader display / false component mounted
- * @property {Boolean} error true error display / false component mounted
  * @property {Object} data
  * @property {Array.<{value: number, kind:number }>}  data.data
  * @property {{number: String}} data.kind to set property key
@@ -35,7 +34,7 @@ const CustomTicks = ({payload, x, y, cx, cy, ...rest}) => {
  * @returns {JSX.Element}
  */
 const Performance = ({perfData}) => {
-	const {data, error, isLoading} = perfData
+	const {data, isLoading} = perfData
 	const kindInFrench = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité']
 	
 	/**
@@ -48,7 +47,6 @@ const Performance = ({perfData}) => {
 	//	const {kind} = data
 	//	const formatData = () => data.data.map((item, index)=>({name:kind[index+1], value: item.value}))
 	
-	if (error) return <span>Oups ! il y a eu un problème</span>
 	return isLoading ? (<Loader/>) : (
 		<div className='perf-container'>
 			<ResponsiveContainer width="100%" height="100%">
@@ -79,7 +77,6 @@ export default Performance
 Performance.propTypes = {
 	perfData: PropTypes.object,
 	isLoading: PropTypes.bool,
-	error:PropTypes.bool,
 	data:PropTypes.object,
 	kindInFrench:PropTypes.array,
 	formatData:PropTypes.arrayOf(PropTypes.shape({

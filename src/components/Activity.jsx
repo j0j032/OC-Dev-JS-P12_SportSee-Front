@@ -43,14 +43,13 @@ const CustomLegend = () => {
  * @component
  * @param {object} activityData
  * @property {Boolean} isLoading true loader display / false component mounted
- * @property {Boolean} error true error display / false component mounted
  * @property {Object} data
  * @property {Array.<{day: string, kilogram:number, calories:number }>}  data.sessions
  * @property {number} data.userId
  * @returns {JSX.Element}
  */
 const Activity = ({activityData}) => {
-	const {data, isLoading, error} = activityData
+	const {data, isLoading} = activityData
 	const {sessions} = data
 	
 	/**
@@ -61,7 +60,6 @@ const Activity = ({activityData}) => {
 	 */
 	const formatData = () => sessions.map((item, index)=>({day:index+1, poids: sessions[index].kilogram, cals: sessions[index].calories}))
 	
-	if (error) return <span>Oups il y a eu un problème</span>
 	return isLoading? (<Loader/>) : (
 		<div className='activity-container'>
 			<ResponsiveContainer title= "Activité quotidienne" width="100%" height="100%">
@@ -138,7 +136,6 @@ CustomTooltip.propTypes = {
 Activity.propTypes = {
 	activityData: PropTypes.object,
 	isLoading: PropTypes.bool,
-	error:PropTypes.bool,
 	data:PropTypes.object,
 	sessions:PropTypes.arrayOf(PropTypes.shape({
 		day:PropTypes.string,

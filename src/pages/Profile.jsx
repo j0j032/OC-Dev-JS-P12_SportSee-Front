@@ -33,6 +33,7 @@ const Profile = () => {
 	const userSessions = useGet(`${id}/average-sessions`)
 	const userPerf = useGet(`${id}/performance`)
 	
+	//handle Errors
 	if (id === undefined || userId !== id) return (<div><Error404/></div>)
 	if (userInfo.error || userActivity.error || userPerf.error || userSessions.error){
 		return (
@@ -43,6 +44,7 @@ const Profile = () => {
 		)
 	}
 	
+	// return Component
 	const {userInfos, keyData, score, todayScore } = userInfo.data
 	return (
 		<div className='page-container'>
