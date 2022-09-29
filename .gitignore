@@ -23,7 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # Jsodc
-/docs
+docs
 
 #Config
 /.idea
+/docs/
