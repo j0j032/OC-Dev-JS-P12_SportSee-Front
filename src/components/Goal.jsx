@@ -1,5 +1,5 @@
 import React from 'react'
-import {RadialBarChart, RadialBar, ResponsiveContainer,} from "recharts";
+import {RadialBarChart, RadialBar, ResponsiveContainer,PolarAngleAxis,Legend} from "recharts";
 import PropTypes from 'prop-types'
 
 /**
@@ -11,32 +11,47 @@ import PropTypes from 'prop-types'
  */
 const Goal = ({score}) => {
 	
-	/**
-	 * Goal formatData method to embed the score in a recharts readable Data
-	 * if user hasn't got score then we set the score to 0
-	 * The second object of the array (index[1]) is a ref for 100% and compare the user score
-	 * @method formatData
-	 * @returns {Array.<{title: string, score: number, fill:string}>}
-	 */
-	const formatData = () => {
-		return [
-			{title:'Score', score: score? score*100 : 0, fill:"#FF0000"},
-			{title:'Score', score:100, fill:"#FBFBFB"}
-		]
+	const formatData = [{score}]
+	
+	const RenderLegend = () => {
+		const userScore = formatData[0].score
+		return (
+			<div className="score-container">
+				<span className="score">{userScore ? userScore * 100 : 0}%</span>
+				<div><p className="description">de votre objectif</p></div>
+			</div>
+		)
 	}
 	
 	return (
-		<div className='goal-container'>
-				<h6>{formatData()[0].title}</h6>
-				<span>{`${formatData()[0].score}%`}<br/><p> de votre objectif</p></span>
+		<div className='goal'>
+				<h3>Score</h3>
 			<ResponsiveContainer width="100%" height="100%">
-				<RadialBarChart cx="50%" cy="50%" innerRadius="70%" outerRadius="80%" barSize={10} data={formatData()}>
+				<RadialBarChart
+					cx="50%"
+					cy="50%"
+					innerRadius="80%"
+					outerRadius="90%"
+					barSize={15}
+					data={formatData}
+					startAngle={score?90:0}
+					endAngle={450}
+				>
+					<PolarAngleAxis type="number" domain={[0, 1]} tick={false} />
 					<RadialBar
-						minAngle={0}
-						background
+						minAngle={15}
 						clockWise
-						dataKey='score'
-						cornerRadius={10}
+						dataKey="score"
+						fill="red"
+						cornerRadius={20}
+					/>
+					<Legend
+						width={120}
+						height={120}
+						layout="vertical"
+						verticalAlign="middle"
+						align="center"
+						content={<RenderLegend />}
 					/>
 				</RadialBarChart>
 			</ResponsiveContainer>
