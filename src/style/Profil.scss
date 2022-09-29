@@ -3,6 +3,9 @@
   flex-direction: column;
   gap: 12px;
   margin-bottom: 40px;
+  @include laptop{
+	margin-bottom: -80px;
+  }
  
   >h1{
 	font-size:48px ;
@@ -23,6 +26,14 @@
   gap: 0 2%;
   grid-template-areas:
     ". .";
+  @include laptop{
+	grid-template-columns: 1fr;
+	grid-template-rows: 17% 1fr;
+	gap: 0px 0px;
+	grid-template-areas:
+    "."
+    ".";
+  }
   @include largeScreens{
 	grid-template-columns: 76% 22%;
   }
@@ -46,6 +57,9 @@
   gap: 0 2%;
   grid-template-areas:
     ". . .";
+  @include desktop{
+  	margin-top: 34px;
+  }
 }
 
 .key-infos__container{
@@ -53,9 +67,12 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 3.5%;
-  @include largeScreens{
-  gap: 7.5%;
+  @include laptop{
+	flex-direction: row;
+	grid-row-start: 1;
+	margin-bottom: 32px;
   }
+  
   height: 100%;
   width: 100%;
 }
@@ -73,7 +90,7 @@
 	border-radius: 5px;
 	padding: 15px 20px;
 	@include largeScreens{
-	  min-height:124px ;
+	  min-height:118px ;
 	}
   }
   &__value{

@@ -1,8 +1,7 @@
 import React from 'react'
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import {PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer} from 'recharts'
 import Loader from './Loader'
-import PropTypes, {object} from 'prop-types'
-import Activity from './Activity'
+import PropTypes from 'prop-types'
 
 /**
  * To add padding between the chart and labels
@@ -17,7 +16,7 @@ import Activity from './Activity'
  */
 const CustomTicks = ({payload, x, y, cx, cy, ...rest}) => {
 	return (
-		<text {...rest} y={y + (y-cy)/8} x={x+ (x- cx)/82}>
+		<text {...rest} y={y + (y - cy) / 8} x={x + (x - cx) / 82}>
 			{payload.value}
 		</text>
 	)
@@ -28,7 +27,6 @@ const CustomTicks = ({payload, x, y, cx, cy, ...rest}) => {
  * @component
  * @param {Object} perfData
  * @property {Boolean} isLoading true loader display / false component mounted
- * @property {Boolean} error true error display / false component mounted
  * @property {Object} data
  * @property {Array.<{value: number, kind:number }>}  data.data
  * @property {{number: String}} data.kind to set property key
@@ -36,7 +34,7 @@ const CustomTicks = ({payload, x, y, cx, cy, ...rest}) => {
  * @returns {JSX.Element}
  */
 const Performance = ({perfData}) => {
-	const {data, error, isLoading} = perfData
+	const {data, isLoading} = perfData
 	const kindInFrench = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité']
 	
 	/**
@@ -44,30 +42,31 @@ const Performance = ({perfData}) => {
 	 * @method formatData
 	 * @returns  {Array.<{name: string, value: number}>}
 	 */
-	const formatData = () => data.data.map((item, index)=>({name:kindInFrench[index], value: item.value}))
+	const formatData = () => data.data.map((item, index) => ({
+		name: kindInFrench[index],
+		value: item.value
+	}))
 	//  To get original data (english)
 	//	const {kind} = data
 	//	const formatData = () => data.data.map((item, index)=>({name:kind[index+1], value: item.value}))
 	
-	
-	if (error) return <span>Oups ! il y a eu un problème</span>
 	return isLoading ? (<Loader/>) : (
 		<div className='perf-container'>
-			<ResponsiveContainer width="100%" height="100%">
+			<ResponsiveContainer width='100%' height='100%'>
 				<RadarChart data={formatData().reverse()}
-							cx="50%" cy="50%"
-							outerRadius="55%"
-							margin={{ top: 15, right: 15, left: 15, bottom: 15 }}>
+				            cx='50%' cy='50%'
+				            outerRadius='55%'
+				            margin={{top: 15, right: 15, left: 15, bottom: 15}}>
 					<PolarGrid radialLines={false}/>
-					<PolarAngleAxis dataKey="name"
-									stroke='#fffefc'
-									tick={<CustomTicks cx={100} cy={70}/>}
-									tickLine={false}
-									dy={0}
+					<PolarAngleAxis dataKey='name'
+					                stroke='#fffefc'
+					                tick={<CustomTicks cx={100} cy={70}/>}
+					                tickLine={false}
+					                dy={0}
 					/>
-					<Radar dataKey="value"
-						   fill="red"
-						   fillOpacity={0.7}
+					<Radar dataKey='value'
+					       fill='red'
+					       fillOpacity={0.7}
 					/>
 				</RadarChart>
 			</ResponsiveContainer>
@@ -75,16 +74,16 @@ const Performance = ({perfData}) => {
 	)
 }
 
+
 export default Performance
 
 Performance.propTypes = {
 	perfData: PropTypes.object,
 	isLoading: PropTypes.bool,
-	error:PropTypes.bool,
-	data:PropTypes.object,
-	kindInFrench:PropTypes.array,
-	formatData:PropTypes.arrayOf(PropTypes.shape({
+	data: PropTypes.object,
+	kindInFrench: PropTypes.array,
+	formatData: PropTypes.arrayOf(PropTypes.shape({
 		name: PropTypes.string, //After formating (before formating Proptype = string (date))
-		value: PropTypes.number,
+		value: PropTypes.number
 	}))
 }
