@@ -29,7 +29,7 @@ const Profile = () => {
 	const userSessions = useGet(`${id}/average-sessions`)
 	const userPerf = useGet(`${id}/performance`)
 	
-	const {userInfos, keyData, score} = userInfo.data
+	const {userInfos, keyData, score, todayScore } = userInfo.data
 	
 	if (userInfo.error || id === undefined) return <span>Oups il y a eu un problème</span>
 	return (
@@ -51,7 +51,7 @@ const Profile = () => {
 										<div className='secondary-charts-container'>
 											<AverageSession sessionData={userSessions}/>
 											<Performance perfData={userPerf}/>
-											<Goal score={score}/>
+											<Goal score={score || todayScore}/>
 										</div>
 									</div>
 									<div className='key-infos__container'>
