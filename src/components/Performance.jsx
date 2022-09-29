@@ -2,7 +2,6 @@ import React from 'react'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import Loader from './Loader'
 import PropTypes, {object} from 'prop-types'
-import Activity from './Activity'
 
 /**
  * To add padding between the chart and labels
@@ -49,7 +48,6 @@ const Performance = ({perfData}) => {
 	//	const {kind} = data
 	//	const formatData = () => data.data.map((item, index)=>({name:kind[index+1], value: item.value}))
 	
-	
 	if (error) return <span>Oups ! il y a eu un problème</span>
 	return isLoading ? (<Loader/>) : (
 		<div className='perf-container'>
@@ -74,6 +72,7 @@ const Performance = ({perfData}) => {
 		</div>
 	)
 }
+
 
 export default Performance
 
