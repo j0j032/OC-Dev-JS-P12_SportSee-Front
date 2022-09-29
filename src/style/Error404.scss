@@ -1,0 +1,31 @@
+.main-container.error{
+  height: 100vh;
+}
+.content.error-container {
+  margin: 0;
+}
+.error{
+    &-container{
+      display: flex;
+      flex-direction: column;
+      background-color: $black;
+      height: 100vh;
+      >img{
+        margin-bottom: 80px;
+      }
+      >h1{
+        font-size: 90px;
+        color: $white;
+      }
+      >p{
+        color: red;
+        margin-bottom: 80px;
+      }
+    }
+    &-404-back-link{
+      color: red;
+      padding: 10px 20px;
+      margin-bottom: 40px;
+    }
+  }
+

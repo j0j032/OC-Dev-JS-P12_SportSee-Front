@@ -9,11 +9,14 @@ import KeyInfo from '../components/KeyInfo'
 import AverageSession from '../components/AverageSession'
 import Performance from '../components/Performance'
 import Goal from '../components/Goal'
+import logo from '../assets/logos/sportSee-logo.svg'
 import caloriesIcon from '../assets/icons/calories-icon.svg'
 import proteinIcon from '../assets/icons/protein-icon.svg'
 import carbsIcon from '../assets/icons/carbs-icon.svg'
 import fatIcon from '../assets/icons/fat-icon.svg'
 import PropTypes from "prop-types"
+import Error404 from './Error404'
+import provisionalConfig from '../config'
 
 
 /**
@@ -24,14 +27,23 @@ import PropTypes from "prop-types"
  */
 const Profile = () => {
 	const {id} = useParams()
+	const userId = provisionalConfig().userId
 	const userInfo = useGet(id)
 	const userActivity = useGet(`${id}/activity`)
 	const userSessions = useGet(`${id}/average-sessions`)
 	const userPerf = useGet(`${id}/performance`)
 	
-	const {userInfos, keyData, score} = userInfo.data
+	if (id === undefined || userId !== id) return (<div><Error404/></div>)
+	if (userInfo.error || userActivity.error || userPerf.error || userSessions.error){
+		return (
+			<section className='oups'>
+				<img src={logo}/>
+				<p>Oups il y a eu un problème, veuillez rechargez la page 🙏</p>
+			</section>
+		)
+	}
 	
-	if (userInfo.error || id === undefined) return <span>Oups il y a eu un problème</span>
+	const {userInfos, keyData, score, todayScore } = userInfo.data
 	return (
 		<div className='page-container'>
 			<Header />
@@ -51,7 +63,7 @@ const Profile = () => {
 										<div className='secondary-charts-container'>
 											<AverageSession sessionData={userSessions}/>
 											<Performance perfData={userPerf}/>
-											<Goal score={score}/>
+											<Goal score={score || todayScore}/>
 										</div>
 									</div>
 									<div className='key-infos__container'>
