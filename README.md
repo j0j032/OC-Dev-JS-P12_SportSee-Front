@@ -11,10 +11,13 @@ To install dependencies run:
 ### 1. With a provisory backend by running:
 
 ### `npm start`
-**a.Note that you should launch the backend micro api before by following the steps here:**
+
+**You'll be connected with user 12(Karl) on [http://localhost:3000](http://localhost:3000)**
+
+**⚠️ Note that you should launch the backend micro api before by following the steps here:**
 https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
 
-**b.You'll be connected with user 12(karl) on [http://localhost:3000](http://localhost:3000)**
+
 
 
 ### 2. With a mocked Api by running:
