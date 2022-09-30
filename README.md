@@ -30,6 +30,8 @@ If using provisory backend open [http://localhost:3000](http://localhost:3000) a
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+**Also note that you can run both at the same time 👍**
+
 ## Docs
 **To generate jsdoc:**
 ### `npm run generate-docs`
