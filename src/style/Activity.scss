@@ -1,9 +1,13 @@
 .activity-container{
+  height: 100%;
   padding: 20px 0 20px 0;
   border-radius: 5px;
-  width: 835px;
-  height: 320px;
-  background-color:#FBFBFB ;
+  background-color:$light-grey ;
+  min-height: 280px;
+  height: 100%;
+  @include laptop{
+    min-height: 320px;
+  }
 }
 
 .custom-tooltip{

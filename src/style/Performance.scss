@@ -1,0 +1,9 @@
+ .perf-container{
+  position: relative;
+  background-color: $black-lighter;
+   border-radius: 5px;
+   aspect-ratio: 1/1;
+ }
+.recharts-polar-angle-axis-tick{
+  font-size: 12px;
+}

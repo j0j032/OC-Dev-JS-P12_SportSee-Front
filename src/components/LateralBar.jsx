@@ -3,10 +3,23 @@ import yogaIcon from '../assets/icons/yoga-icon.svg'
 import swimIcon from '../assets/icons/swim-icon.svg'
 import bikeIcon from '../assets/icons/bike-icon.svg'
 import dumbellIcon from '../assets/icons/dumbell-icon.svg'
+import PropTypes from 'prop-types'
 
+
+/**
+ * Component for showing the left vertical navigation
+ * @returns {JSX.Element}
+ */
 const LateralBar = () => {
 	const date = Date.now()
+	
+	/**
+	 * To get the good copyright year each year
+	 * @param {number} date
+	 * @returns {string}
+	 */
 	const dateFormater = date => new Date(date).toLocaleDateString('fr-FR', {year: 'numeric'})
+	
 	return (
 		<div className='lateralBar__container'>
 			<div className='lateralBar__activity-icon--container'>
@@ -21,3 +34,8 @@ const LateralBar = () => {
 }
 
 export default LateralBar
+
+LateralBar.propTypes = {
+	date: PropTypes.number,
+	dateFormater : PropTypes.string
+}
