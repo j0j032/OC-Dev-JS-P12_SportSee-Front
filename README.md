@@ -11,21 +11,21 @@ To install dependencies run:
 ### 1. With a provisory backend by running:
 
 ### `npm start`
-**1.Note that you should lauch the backend micro api before by following the steps here:**
+**a.Note that you should lauch the backend micro api before by following the steps here:**
 https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
 
-**2.You'll be connected with user 12(karl) on [http://localhost:3000](http://localhost:3000)**
+**b.You'll be connected with user 12(karl) on [http://localhost:3000](http://localhost:3000)**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### 2. With a mocked Api by running:
 
 ### `npm run mockedApi`
 **You'll be connected with user 18(Cecilia) on [http://localhost:3001](http://localhost:3001)**
 
+Runs the app in the development mode.\
+So if using provisory backend Open [http://localhost:3000](http://localhost:3000) or if using mocked api [http://localhost:3001](http://localhost:3001) to view it in your browser.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
 ## Docs
 **To generate jsdoc:**
