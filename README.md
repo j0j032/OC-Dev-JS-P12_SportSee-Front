@@ -22,8 +22,11 @@ https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
 ### `npm run mockedApi`
 **You'll be connected with user 18(Cecilia) on [http://localhost:3001](http://localhost:3001)**
 
-Runs the app in the development mode.\
-So if using provisory backend Open [http://localhost:3000](http://localhost:3000) or if using mocked api [http://localhost:3001](http://localhost:3001) to view it in your browser.
+
+#
+**So, to runs the app in the development mode**
+
+If using provisory backend open [http://localhost:3000](http://localhost:3000) and if using mocked api [http://localhost:3001](http://localhost:3001) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
