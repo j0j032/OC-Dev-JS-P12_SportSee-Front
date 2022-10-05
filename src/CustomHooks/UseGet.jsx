@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import {useEffect, useState} from 'react'
 import axios from 'axios'
 import provisionalConfig from '../config'
 import PropTypes from 'prop-types'
@@ -21,21 +21,22 @@ export const useGet = (endPoint) => {
 	useEffect(() => {
 		setLoading(true)
 		axios
-			.get(userRoute+endPoint)
+			.get(userRoute + endPoint)
 			.then((response) => setData(response.data.data))
-			.catch((error) => {console.log(error)
+			.catch((error) => {
+				console.log(error)
 				setError(error)
 			})
 			.finally(() => setLoading(false))
-	}, [])
+	}, [endPoint, userRoute])
 	
-	return { isLoading, data, error }
+	return {isLoading, data, error}
 }
 
-useGet.propTypes= {
+useGet.propTypes = {
 	isLoading: PropTypes.bool,
-	error:PropTypes.bool,
-	data:PropTypes.object,
+	error: PropTypes.bool,
+	data: PropTypes.object,
 	userRoute: PropTypes.string,
 	endPoint: PropTypes.string
 }
