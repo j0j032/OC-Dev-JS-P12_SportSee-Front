@@ -27,7 +27,7 @@ https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
 
 
 #
-**So, to runs the app in the development mode**
+**So, to run the app in development mode**
 
 If using provisory backend open [http://localhost:3000](http://localhost:3000) and if using mocked api [http://localhost:3001](http://localhost:3001) to view it in your browser.
 The page will reload when you make changes.\
