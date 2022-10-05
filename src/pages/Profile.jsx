@@ -34,7 +34,7 @@ const Profile = () => {
 	const userPerf = useGet(`${id}/performance`)
 	
 	//handle Errors
-	if (id === undefined || userId !== id) return (<div><Error404/></div>)
+	if (id === undefined || userId !== id) return (<Error404/>)
 	if (userInfo.error || userActivity.error || userPerf.error || userSessions.error) {
 		return (
 			<section className='oups'>
