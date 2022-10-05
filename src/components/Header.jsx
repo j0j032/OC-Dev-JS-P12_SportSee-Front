@@ -17,7 +17,7 @@ const Header = () => {
 				<NavLink to='/'>
 					<img src={logo} alt='logo sportSee'/>
 				</NavLink>
-				<NavLink to='/'
+				<NavLink to='/' end
 				         className={(nav) => (nav.isActive ? 'header__nav-link--active' : 'header__nav-link')}>
 					<li>Accueil</li>
 				</NavLink>
