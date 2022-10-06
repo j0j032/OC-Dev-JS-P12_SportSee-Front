@@ -1,3 +1,5 @@
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/j0j032/OC-Dev-JS-P12_SportSee-Front)
+
 # Getting Started 
 
 To install dependencies run:
